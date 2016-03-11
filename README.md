@@ -32,7 +32,7 @@ $form->append($field);
 
 $form->render();
 ```
-###2. The simple ProcessForm Way:
+###The simple ProcessForm Way:
 ```php
 
 $form = new ProcessForm();
