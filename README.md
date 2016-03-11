@@ -3,9 +3,8 @@ A Simple wrapper class for the Form API of the Processwire CMS
 
 This is a simple Wrapper Class to minimze the code when using the Form API of the Processwire CMS...
 
-
-1. The old fashioned way to build a Form with the Form API of the Processwire CMS:
-
+###The old fashioned way to build a Form with the Form API of the Processwire CMS:
+```php
 $form = $modules->get("InputfieldForm");
 $form->action = "./somewhere";
 $form->method = "post";
@@ -32,7 +31,8 @@ $field->required = 1;
 $form->append($field);
 
 $form->render();
-
+```
+```php
 2. The simple ProcessForm Way:
 
 $form = new ProcessForm();
@@ -61,5 +61,5 @@ $attributes = array(
 $form->addInputfield("InputfieldRadios", $f_object, "To much code for a simple Form?", $attributes, 1, $options);
 
 $form->render();
-
+```
 @author Orkun Atasoy aka "Nukro"
