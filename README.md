@@ -35,7 +35,7 @@ $form->render();
 ###The simple ProcessForm Way:
 ```php
 
-$form = new ProcessForm();
+$form = new ProcessForm("./contact", "post", "contactform"); //default ("./", "post", "ProcessForm")
 $f_object = $form->getFormObject();
 
 $attributes = array('id' => "firstname", 'name' => "firstname");
