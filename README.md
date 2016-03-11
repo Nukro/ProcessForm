@@ -36,7 +36,7 @@ $form->render();
 ```php
 
 $form = new ProcessForm();
-$f_object = $form->inputfieldFormObject;
+$f_object = $form->getFormObject();
 
 $attributes = array('id' => "firstname", 'name' => "firstname");
 $form->addInputfield("InputfieldText", $f_object, "First Name", $attributes, 1);
