@@ -14,31 +14,17 @@
  * @author Orkun Atasoy <orkunatasoy1996@live.de>
  * 
  * Getting Started: Place the ProcessForm.php file anywhere inside your template folder and include it for example in the init.php file.
- * Then you can create a new ProcessForm() inside your templates and start building you Form!
+ * Then you can create a new ProcessForm() object and get the InputfieldForm Object from the InputfieldFrom Class from Processwire
+ * to add Inputfields to it with the addInputfield() function. 
+ * 
+ * Enjoy and start building you Forms with ease!
  *
  */
 
 class ProcessForm{
 
 	public $inputfieldFormObject;
-	public $inputfields = array(
-			'fieldset' => "InputfieldFieldset", 
-			'radio' => "InputfieldRadios", 
-			'text' => "InputfieldText",
-			'textarea' => "InputfieldTextarea",
-			'checkbox' => "InputfieldCheckbox",
-			'submit' => "InputfieldSubmit",
-			'email' => "InputfieldEmail",
-			'float' => "InputfieldFloat",
-			'hidden' => "InputfieldHidden",
-			'int' => "InputfieldInteger",
-			'markup' => "InputfieldMarkup",
-			'name' => "InputfieldName",
-			'password' => "InputfieldPassword",
-			'select' => "InputfieldSelect",
-			'selectmultiple' => "InputfieldSelectMultiple",
-			'url' => "InputfieldURL",
-	);
+
 
 
 	/**
@@ -92,6 +78,10 @@ class ProcessForm{
 			}
 	}
 
+
+	function getFormObject(){
+		return $this->inputfieldFormObject;
+	}
 
 	/**
 	 * render the formobject
