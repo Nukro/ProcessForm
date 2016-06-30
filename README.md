@@ -36,17 +36,17 @@ $form->render();
 ```php
 
 $form = new ProcessForm("./contact", "post", "contactform"); //default ("./", "post", "ProcessForm")
-$f_object = $form->getFormObject();
+$f = $form->getFormObject();
 
 $attributes = array('id' => "firstname", 'name' => "firstname");
-$form->addInputfield("InputfieldText", $f_object, "First Name", $attributes, 1);
+$form->addInputfield("InputfieldText", $f, "First Name", $attributes, 1);
 
 $attributes = array('id' => "surname", 'name' => "surname");
-$form->addInputfield("InputfieldText", $f_object, "Surname", $attributes, 1);
+$form->addInputfield("InputfieldText", $f, "Surname", $attributes, 1);
 
 $options = array('yes' => "Yes, absolutely", 'no' => "No, absolutely not");
 $attributes = array('id' => "tomuchcode", 'name' => "tomuchcode");
-$form->addInputfield("InputfieldRadios", $f_object, "To much code for a simple Form?", $attributes, 1, $options);
+$form->addInputfield("InputfieldRadios", $f, "To much code for a simple Form?", $attributes, 1, $options);
 
 $form->render();
 ```
