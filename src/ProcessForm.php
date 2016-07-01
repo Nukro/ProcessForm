@@ -106,7 +106,7 @@ class ProcessForm{
 	 * @return [type] [description]
 	 */
 	function render(){
-		return $this->inputfieldFormObject->render();
+		return $this->formObject->render();
 	}
 
 }
