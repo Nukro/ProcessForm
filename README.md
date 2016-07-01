@@ -1,7 +1,7 @@
 # ProcessForm
 A Simple wrapper class for the Form API of the Processwire CMS
 
-This is a simple Wrapper Class to minimze the code when using the Form API of the Processwire CMS...
+This is a simple Wrapper Class to improve the readability of the code when using the Form API of the Processwire CMS...
 
 ###The old fashioned way to build a Form with the Form API of the Processwire CMS:
 ```php
