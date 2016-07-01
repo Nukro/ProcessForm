@@ -36,17 +36,30 @@ $form->render();
 ```php
 
 $form = new ProcessForm("./contact", "post", "contactform"); //default ("./", "post", "ProcessForm")
-$f = $form->getFormObject();
 
-$attributes = array('id' => "firstname", 'name' => "firstname");
-$form->addInputfield("InputfieldText", $f, "First Name", $attributes, 1);
+$form->addInput(array(
+	'type' => "InputfieldText", 
+	'label' => "First Name",
+	'attributes' => array('id' => "firstname", 'name' => "firstname"),
+	'required' => 1
+));
 
-$attributes = array('id' => "surname", 'name' => "surname");
-$form->addInputfield("InputfieldText", $f, "Surname", $attributes, 1);
+$form->addInput(array(
+	'type' => "InputfieldText", 
+	'label' => "Surname",
+	'attributes' => array('id' => "surname", 'name' => "surname"),
+	'required' => 1
+));
 
-$options = array('yes' => "Yes, absolutely", 'no' => "No, absolutely not");
-$attributes = array('id' => "tomuchcode", 'name' => "tomuchcode");
-$form->addInputfield("InputfieldRadios", $f, "To much code for a simple Form?", $attributes, 1, $options);
+$form->addInput(array(
+	'type' => "InputfieldRadios", 
+	'label' => "To much code for a simple Form?",
+	'value' => "herr",
+	'options' => array('yes' => "Yes, absolutely", 'no' => "No, absolutely not"),
+	'attributes' => array('id' => "tomuchcode", 'name' => "tomuchcode"),
+	'required' => 1
+));
+
 
 $form->render();
 ```
