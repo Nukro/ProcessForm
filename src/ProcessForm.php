@@ -23,7 +23,7 @@
 
 class ProcessForm{
 
-	public $inputfieldFormObject;
+	public $formObject;
 
 
 
@@ -38,49 +38,67 @@ class ProcessForm{
 		$form->action = $action;
 		$form->method = $method;
 		$form->attr("id+name", $name_id);
-		
-		$this->inputfieldFormObject = $form;
+		$this->formObject = $form;
 	}
 
 
-	/**
-	 * Add any kind of inputfield to your Form object
-	 * @param string  $inputfieldtype type of the inputfield
-	 * @param object  $formobject     to which form object should it be added
-	 * @param string  $label          the label of the inputfield
-	 * @param array   $attributes     some input attributes like "class, id, value, name" etc..
-	 * @param integer $isrequired     1 for required and 0 for non-required
-	 * @param array   $options        add some options for radios, selects, checkboxes or selectmultiple inputs ($value => $title)
+/**
+	 * Adds Input to your form object
+	 * @param array  $opts     [description]
+	 * @param [type] $fieldset [description]
 	 */
-	function addInputfield($inputfieldtype, $formobject, $label, $attributes = array(), $isrequired = 0, $options = array()){
-			$field = wire('modules')->get($inputfieldtype);
-			$field->label = __($label);
+	function addInput($opts = array(), $fieldset){
+		$type = $opts['type'];
+		$attributes = $opts['attributes'];
+		$options = $opts['options'];
 
-			$attributes = array_filter($attributes);
-			if (!empty($attributes)) {
-				foreach ($attributes as $key => $value) {
-					$field->attr($key, $value);
-				}
+		$field = wire('modules')->get($type);
+		$field->label = $opts['label'];
+
+
+		if (array_filter($attributes)) {
+			foreach ($attributes as $key => $value) {
+				$field->attr($key, $value);
 			}
-
-			$options = array_filter($options);
-			if (!empty($options)) {
-				foreach ($options as $key => $value) {
-				    $field->addOption($key, $value);
-				}
+		}
+	
+		if (array_filter($options)) {
+			foreach ($options as $key => $value) {
+			    $field->addOption($key, $value);
 			}
+		}
 
-			$field->required = $isrequired;
-			$formobject->append($field);
+		if($opts['collapsed'] == TRUE){
+			$field->collapsed = Inputfield::collapsedYes;
+		}
 
-			if($inputfieldtype == "InputfieldFieldset"){
-				return $field;
-			}
-	}
+		if($opts['showIf'] != ""){
+			$field->showIf = $opts['showIf'];
+		}
 
+		if($opts['columnWidth'] != ""){
+			$field->columnWidth = $opts['columnWidth'];
+		}
 
-	function getFormObject(){
-		return $this->inputfieldFormObject;
+		if($opts['value'] != ""){
+			$field->value = $opts['value'];
+		}
+
+		if($opts['required'] != ""){
+			$field->required = $opts['required'];
+		}else{
+			$field->required = 0;
+		}
+
+		if($fieldset == ""){
+			$this->formObject->add($field);
+		}else{
+			$fieldset->add($field);
+		}
+
+		if($type == "InputfieldFieldset"){
+			return $field;
+		}	
 	}
 
 	/**
