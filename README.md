@@ -54,7 +54,6 @@ $form->addInput(array(
 $form->addInput(array(
 	'type' => "InputfieldRadios", 
 	'label' => "To much code for a simple Form?",
-	'value' => "herr",
 	'options' => array('yes' => "Yes, absolutely", 'no' => "No, absolutely not"),
 	'attributes' => array('id' => "tomuchcode", 'name' => "tomuchcode"),
 	'required' => 1
