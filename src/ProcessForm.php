@@ -47,11 +47,10 @@ class ProcessForm{
 	 * @param [type] $fieldset [description]
 	 */
 	function addInput($opts = array(), $fieldset){
-		$type = $opts['type'];
 		$attributes = $opts['attributes'];
 		$options = $opts['options'];
 
-		$field = wire('modules')->get($type);
+		$field = wire('modules')->get($opts['type']);
 		$field->label = $opts['label'];
 
 
@@ -95,7 +94,7 @@ class ProcessForm{
 			$fieldset->add($field);
 		}
 
-		if($type == "InputfieldFieldset"){
+		if($opts['type'] == "InputfieldFieldset"){
 			return $field;
 		}	
 	}
